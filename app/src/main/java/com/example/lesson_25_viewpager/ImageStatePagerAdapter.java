@@ -1,22 +1,29 @@
 package com.example.lesson_25_viewpager;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.net.Uri;
+
+import java.util.List;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 public class ImageStatePagerAdapter extends FragmentStatePagerAdapter {
 
-    public ImageStatePagerAdapter(FragmentManager fm) {
+    private List<Uri> mUris;
+
+    public ImageStatePagerAdapter(FragmentManager fm, List<Uri> uriList) {
         super(fm);
+        mUris = uriList;
     }
 
     @Override
     public Fragment getItem(int i) {
-        return null;
+        return ImageFragment.newInstance(mUris.get(i));
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return mUris.size();
     }
 }
